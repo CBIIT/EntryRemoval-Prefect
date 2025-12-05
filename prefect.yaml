@@ -1,5 +1,11 @@
 name: entry-remove-project
-prefect-version: ">=2.16.0"
+prefect-version: 3.2.14
+
+# build section allows you to manage and build docker images
+build: null
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push: null
 
 # Local execution + Cloud "test" workspace via a local worker.
 # - Runs flows/entry_remove_flow.py:run_entry_remove
@@ -8,10 +14,17 @@ prefect-version: ">=2.16.0"
 
 # Clone the EntryRemoval-Prefect repo on each run so workers get the latest flows & code.
 pull:
-  - prefect.projects.steps.git_clone:
-      repository: https://github.com/EXRamos/EntryRemoval-Prefect
+  - prefect.projects.steps.git_clone_project:
+      id: clone-step
+      repository: https://github.com/CBIIT/EntryRemoval-Prefect.git
       branch: main
+      
+  - prefect.projects.steps.pip_install_requirements:
+      requirements_file: requirements.txt
+      directory: "{{ clone-step.directory }}"
+      stream_output: False
 
+# the deployments section provides configurations for deploying flows
 deployments:
 - name: ccdi-entry-remove-v1
   version: null
@@ -20,6 +33,7 @@ deployments:
   entrypoint: flows/entry_remove_flow.py:run_entry_remove
   schedule: null
   
+  # flow-specific parameters
   parameters:
     s3_bucket: "ccdi-validation"
     manifest_key: "user/path/to/manifest.xlsx"
@@ -31,8 +45,28 @@ deployments:
     template_path: "data/template.xlsx"
     entries_path: "data/entries.tsv"
     s3_output_prefix: null
+  
   work_pool:
     name: ccdi-curation-8gb-prefect-3.2.14-python3.9
     work_queue_name: default
     job_variables: {}
   schedules: []
+
+  
+  # pull action to overwrite from file pull action
+  pull: 
+    - prefect.deployments.steps.git_clone:
+      id: clone-step
+      repository: https://github.com/CBIIT/EntryRemoval-Prefect.git
+      branch: main
+    - prefect.deployments.steps.pip_install_requiements: 
+        requirements_file: requirements.txt
+        directory: "{{ clone-step.directory }}"
+        stream_output: False
+    # - prefect.deployments.steps.run_shell_script:
+        # script: |
+        # apt-get update -y
+        # apt-get install -y ca-certificates
+        # apt install maven -y
+    # stream_output: true
+  
