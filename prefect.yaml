@@ -26,7 +26,7 @@ pull:
 
 # the deployments section provides configurations for deploying flows
 deployments:
-- name: ccdi-entry-remove-v1
+- name: ccdi-entry-removal-v1
   version: null
   tags: ["ENTRY REMOVE"]
   description: "Entry remove flow for CCDI workspace using ccdi-validation S3 bucket"
@@ -48,7 +48,7 @@ deployments:
   
   work_pool:
     name: ccdi-curation-8gb-prefect-3.2.14-python3.9
-    work_queue_name: default
+    work_queue_name:
     job_variables: {}
   schedules: []
 
