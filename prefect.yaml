@@ -35,12 +35,12 @@ deployments:
   
   # flow-specific parameters
   parameters:
-    s3_bucket: "ccdi-validation"
-    manifest_key: "user/path/to/manifest.xlsx"
-    template_key: "user/path/to/template.xlsx"
-    entries_key: "user/path/to/entries.tsv"
-    outputs_glob: "*_EntRemove*.xlsx"
-    output_prefix: "outputs/entry-remove/"
+    s3_bucket: bucket
+    manifest_key: path to manifest.xlsx
+    template_key: path to template.xlsx
+    entries_key: path to entries.tsv
+    outputs_glob: *_EntRemove*.xlsx
+    output_prefix: outputs/entry-remove
     manifest_path: "data/manifest.xlsx"
     template_path: "data/template.xlsx"
     entries_path: "data/entries.tsv"
