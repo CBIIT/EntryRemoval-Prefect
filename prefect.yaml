@@ -35,16 +35,16 @@ deployments:
   
   # flow-specific parameters
   parameters:
-    s3_bucket: bucket
-    manifest_key: path to manifest.xlsx
-    template_key: path to template.xlsx
-    entries_key: path to entries.tsv
-    outputs_glob: *_EntRemove*.xlsx
-    output_prefix: outputs/entry-remove
+    s3_bucket: "bucket"
+    manifest_key: "path to manifest.xlsx"
+    template_key: "path to template.xlsx"
+    entries_key: "path to entries.tsv"
+    outputs_glob: "*_EntRemove*.xlsx"
+    output_prefix: "outputs/entry-remove"
     manifest_path: "data/manifest.xlsx"
     template_path: "data/template.xlsx"
     entries_path: "data/entries.tsv"
-    s3_output_prefix: null
+    s3_output_prefix: ""
   
   work_pool:
     name: ccdi-curation-8gb-prefect-3.2.14-python3.9

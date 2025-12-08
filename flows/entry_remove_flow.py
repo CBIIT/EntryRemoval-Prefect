@@ -10,11 +10,14 @@ from prefect import flow, task, get_run_logger
 from prefect.artifacts import create_markdown_artifact
 
 # Optional S3 support
-try:
+ 
+ import boto3
+ """
+ try:
     import boto3  # type: ignore
 except Exception:  # pragma: no cover
     boto3 = None
-
+ """
 
 def _is_s3_path(p: str) -> bool:
     """Return True if the string looks like an S3 URL."""
