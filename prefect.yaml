@@ -14,12 +14,12 @@ push: null
 
 # Clone the EntryRemoval-Prefect repo on each run so workers get the latest flows & code.
 pull:
-  - prefect.projects.steps.git_clone_project:
+  - prefect.deployments.steps.git_clone:
       id: clone-step
       repository: https://github.com/CBIIT/EntryRemoval-Prefect.git
       branch: main
       
-  - prefect.projects.steps.pip_install_requirements:
+  - prefect.deployments.steps.pip_install_requirements:
       requirements_file: requirements.txt
       directory: "{{ clone-step.directory }}"
       stream_output: False
