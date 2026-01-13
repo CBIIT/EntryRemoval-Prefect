@@ -182,20 +182,20 @@ def publish_run_summary(result: dict, uploaded: Optional[list] = None) -> None:
 @flow(name="entry-remove-flow")
 def run_entry_remove(
     # UI-entered ARGS (S3-first)
-    s3_bucket: str = "ccdi-validation",
-    manifest_key: str = "",
-    template_key: str = "",
-    entries_key: str = "",
+    s3_bucket: str,
+    manifest_key: str,
+    template_key: str,
+    entries_key: str,
     # Where in the bucket to put results (e.g., outputs/entry-remove/)
-    output_prefix: str = "outputs/entry-remove/",
+    output_prefix: str,
 
     # Pattern for local output files created by entry_remove.py
-    outputs_glob: str = "*_EntRemove*.xlsx",
+    outputs_glob: str,
 
     # Fallback local paths (used when keys are blank or for local testing)
-    manifest_path: str = "data/manifest.xlsx",
-    template_path: str = "data/template.xlsx",
-    entries_path: str = "data/entries.tsv",
+    manifest_path: str,
+    template_path: str,
+    entries_path: str,
 
     # Optional override: full S3 prefix URL for outputs (e.g., s3://bucket/prefix/)
     s3_output_prefix: Optional[str] = None,

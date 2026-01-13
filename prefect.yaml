@@ -35,15 +35,15 @@ deployments:
   
   # flow-specific parameters
   parameters:
-    s3_bucket: "bucket"
-    manifest_key: "path to manifest.xlsx"
-    template_key: "path to template.xlsx"
-    entries_key: "path to entries.tsv"
-    outputs_glob: "*_EntRemove*.xlsx"
-    output_prefix: "outputs/entry-remove"
-    manifest_path: "data/manifest.xlsx"
-    template_path: "data/template.xlsx"
-    entries_path: "data/entries.tsv"
+    s3_bucket: ""
+    manifest_key: ""
+    template_key: ""
+    entries_key: ""
+    outputs_glob: ""
+    output_prefix: ""
+    manifest_path: ""
+    template_path: ""
+    entries_path: ""
     s3_output_prefix: ""
   
   work_pool:
