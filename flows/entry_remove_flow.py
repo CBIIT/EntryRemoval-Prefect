@@ -239,13 +239,13 @@ def run_entry_remove(
     # --- Construct S3 URLs from UI-provided keys, if present ---
     # If user gives keys, we ignore the local paths and build S3 URLs.
     if manifest_key:
-        manifest_path = f"s3://{s3_bucket}/{manifest_key}"
+        manifest_path = f"s3://{s3_bucket}{manifest_key}"
         logger.info("Using S3 manifest path: %s", manifest_path)
     if template_key:
-        template_path = f"s3://{s3_bucket}/{template_key}"
+        template_path = f"s3://{s3_bucket}{template_key}"
         logger.info("Using S3 template path: %s", template_path)
     if entries_key:
-        entries_path = f"s3://{s3_bucket}/{entries_key}"
+        entries_path = f"s3://{s3_bucket}{entries_key}"
         logger.info("Using S3 entries path: %s", entries_path)
 
     # --- Construct default s3_output_prefix if not provided ---
