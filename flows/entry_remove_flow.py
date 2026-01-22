@@ -190,18 +190,18 @@ def run_entry_remove(
     output_prefix: str,
 
     # Pattern for local output files created by entry_remove.py
-    outputs_glob: str,
+    # outputs_glob: str,
 
     # Fallback local paths (used when keys are blank or for local testing)
-    manifest_path: str,
-    template_path: str,
-    entries_path: str,
+    # manifest_path: str,
+    # template_path: str,
+    # entries_path: str,
 
     # Optional override: full S3 prefix URL for outputs (e.g., s3://bucket/prefix/)
-    s3_output_prefix: Optional[str] = None,
+    # s3_output_prefix: Optional[str] = None,
 
     # Optional: override Python executable
-    python_exe: Optional[str] = None,
+    # python_exe: Optional[str] = None,
 ) -> dict:
     """
     Prefect flow that wraps entry_remove.py for use in Prefect UI / ECS.

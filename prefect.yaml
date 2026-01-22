@@ -41,10 +41,10 @@ deployments:
     entries_key: ""
     outputs_glob: ""
     output_prefix: ""
-    manifest_path: ""
-    template_path: ""
-    entries_path: ""
-    s3_output_prefix: ""
+    #manifest_path: ""
+    #template_path: ""
+    #entries_path: ""
+    #s3_output_prefix: ""
   
   work_pool:
     name: ccdi-curation-8gb-prefect-3.2.14-python3.9
